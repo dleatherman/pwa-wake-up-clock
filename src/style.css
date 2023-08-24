@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+:root {
+  accent-color: #222222;
+  --color-link: #0C4944;
+  --color-background: #D4E5F5;
+  --color-foreground: #222222;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    accent-color: #D4E5F5;
+    --color-link: #E9D685;
+    --color-background: #222222;
+    --color-foreground: #D4E5F5;
+  }
+}
+
+
+html {
+  background: var(--color-background);
+	font-size: 62.5%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+  background: var(--color-background);
+	color: var(--color-foreground);
+	display: grid;
+	font-family: 'Space Mono', monospace;
+	font-size: clamp(3rem, 13vw + 1rem, 20rem);
+	font-weight: 400;
+	line-height: 1;
+	margin: 0;
+  min-height: calc(100% + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+	place-content: center;
+	text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--color-link);
+}
+
+.icon {
+	height: auto;
+	max-width: 4.4rem;
+}
+
+.icon--settings {
+	position: fixed;
+	top: 1rem;
+	right: 1rem;
+}

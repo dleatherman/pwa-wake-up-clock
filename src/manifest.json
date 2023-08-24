@@ -1,0 +1,15 @@
+{
+  "name": "Wake Up Clock",
+  "short_name": "Wake Up",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "landscape-primary",
+  "background_color": "#D4E5F5",
+  "icons": [
+    {
+      "src": "/assets/icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
