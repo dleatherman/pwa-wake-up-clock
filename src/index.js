@@ -1,13 +1,14 @@
 import './style';
-import Clock from './components/Clock';
+import Home from './screens/Home'
+import Settings from './screens/Settings'
 
-import SettingsIcon from './icons/settings';
+import Router from 'preact-router';
 
 export default function App() {
 	return (
-		<div>
-			<SettingsIcon />
-			<Clock />
-		</div>
+		<Router>
+			<Home path="/" />
+			<Settings path="/settings" />
+		</Router>
 	);
 }

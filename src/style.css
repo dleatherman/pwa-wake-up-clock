@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Lato&family=Tilt+Prism&display=swap');
 
 :root {
-	--font-stack: 'Tilt Prism', monospace;
+	--font-stack: 'Inter', monospace;
   accent-color: #222222;
   --color-link: #0C4944;
   --color-background: #D4E5F5;
@@ -50,11 +50,18 @@ a {
 .icon {
 	fill: var(--color-foreground);
 	height: auto;
-	max-width: 4.4rem;
+	max-width: 3rem;
 }
 
 .icon--settings {
 	position: fixed;
 	top: 1rem;
-	right: 1rem;
+	right: calc(env(safe-area-inset-right) + 1rem);
+}
+
+.icon--back {
+	position: fixed;
+	top: 1rem;
+	left: 1rem;
+	left: calc(env(safe-area-inset-left) + 1rem);
 }
