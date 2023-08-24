@@ -48,6 +48,7 @@ a {
 }
 
 .icon {
+	fill: var(--color-foreground);
 	height: auto;
 	max-width: 4.4rem;
 }
