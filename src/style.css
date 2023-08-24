@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Lato&family=Tilt+Prism&display=swap');
 
 :root {
+	--font-stack: 'Tilt Prism', monospace;
   accent-color: #222222;
   --color-link: #0C4944;
   --color-background: #D4E5F5;
@@ -29,7 +30,7 @@ body {
   background: var(--color-background);
 	color: var(--color-foreground);
 	display: grid;
-	font-family: 'Space Mono', monospace;
+	font-family: var(--font-stack);
 	font-size: clamp(3rem, 13vw + 1rem, 20rem);
 	font-weight: 400;
 	line-height: 1;
