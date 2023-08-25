@@ -1,30 +1,31 @@
-import { Component } from 'preact'
+import { useEffect, useState } from 'preact/hooks';
+import { get } from 'idb-keyval';
+import { wakeUpTime } from '../signals/WakeUpTimeSignals';
+import { asleepTime } from '../signals/AsleepTimeSignals';
 
-class Clock extends Component {
-
-  constructor() {
-    super();
-    this.state = { time: Date.now() };
-  }
-
-  // Lifecycle: Called whenever our component is created
-  componentDidMount() {
-    // update time every second
-    this.timer = setInterval(() => {
-      this.setState({ time: Date.now() });
+export default function Clock() {
+  useEffect(() => {
+    const getWakeUpTime = () => {
+      get('WakeUpTime').then((WakeUpTime) => wakeUpTime.value = WakeUpTime);
+    }
+    getWakeUpTime();
+    const getAsleepTime = () => {
+      get('AsleepTime').then((AsleepTime) => asleepTime.value = AsleepTime);
+    }
+    getAsleepTime();
+    const timer = setInterval(() => {
+      let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      let compareTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+      setTime(time);
+      setAwake(compareTime > wakeUpTime.value && compareTime < asleepTime.value);
     }, 1000);
-  }
+    return () => clearInterval(timer);
+  }, [wakeUpTime.value, asleepTime.value, useState]);
 
-  // Lifecycle: Called just before our component will be destroyed
-  componentWillUnmount() {
-    // stop when not renderable
-    clearInterval(this.timer);
-  }
+  const [time, setTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }))
+  const [awake, setAwake] = useState(false)
 
-  render() {
-    let time = new Date(this.state.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    return <h1>{time}</h1>;
-  }
+  return (
+    <h1 class={awake ? 'awake' : 'asleep'}>{time}</h1>
+  )
 }
-
-export default Clock;
