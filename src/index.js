@@ -1,8 +1,13 @@
-import './style';
+import { useEffect } from 'preact/hooks';
+import { keys } from 'idb-keyval';
+
 import Home from './screens/Home'
 import Settings from './screens/Settings'
 
 import Router from 'preact-router';
+
+import './style';
+
 
 export default function App() {
 	return (
