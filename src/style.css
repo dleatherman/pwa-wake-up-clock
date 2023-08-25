@@ -52,7 +52,7 @@ h1 {
 	font-weight: normal;
 }
 .asleep {
-	color: color-mix(in srgb, var(--color-foreground) 20%, transparent 80%);
+	color: color-mix(in srgb, var(--color-foreground) 10%, transparent 90%);
 }
 .awake {
 	color: var(--color-foreground);
