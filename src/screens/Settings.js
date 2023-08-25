@@ -2,26 +2,15 @@ import { useEffect } from 'preact/hooks';
 import { Link } from 'preact-router';
 import { set, del, get } from 'idb-keyval';
 
-import BackIcon from '../components/BackIcon';
 import { wakeUpTime } from '../signals/WakeUpTimeSignals';
 
-export default function Settings() {
-  useEffect(() => {
-    const getWakeUpTime = () => {
-      get('WakeUpTime').then((WakeUpTime) => setTime(WakeUpTime));
-    }
-    getWakeUpTime();
-    return () => { };
-  }, []);
+import BackIcon from '../components/BackIcon';
 
-  const setTime = (time) => {
-    wakeUpTime.value = time
-  }
+export default function Settings() {
 
   const handleChange = (e) => {
     const value = e.target.value;
     if (value) {
-      setTime(value)
       set('WakeUpTime', value)
         .catch((err) => console.warn(err));
     } else {
